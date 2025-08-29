@@ -3,6 +3,7 @@
 import Container from '../common/Container';
 import { motion } from 'framer-motion';
 import React from 'react';
+import Image from 'next/image';
 
 const units = [
   {
@@ -32,32 +33,28 @@ const units = [
   },
 ];
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.6,
-    },
-  }),
-} as const;
+interface ImageWithFallbackProps {
+  src: string;
+  alt: string;
+  className?: string;
+}
 
-function ImageWithFallback({ src, alt, className }: { src: string; alt: string; className?: string }) {
+const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({ src, alt, className = '' }) => {
   const [imageError, setImageError] = React.useState(false);
   
   return (
-    <div className={className}>
+    <div className={`relative w-full h-full ${className}`}>
       {!imageError ? (
-        <img
+        <Image
           src={src}
           alt={alt}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           onError={() => {
             console.error(`Failed to load image: ${src}`);
             setImageError(true);
           }}
-          className="w-full h-full object-cover"
+          className="object-cover"
         />
       ) : (
         <div className="w-full h-full bg-gray-200 flex items-center justify-center">
@@ -72,7 +69,7 @@ export default function UnitSection() {
   // Debug: Log the image paths
   React.useEffect(() => {
     units.forEach(unit => {
-      const img = new Image();
+      const img = new window.Image();
       img.onload = () => console.log(`Loaded: ${unit.bgImage}`);
       img.onerror = () => console.error(`Failed to load: ${unit.bgImage}`);
       img.src = unit.bgImage;

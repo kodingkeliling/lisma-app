@@ -20,7 +20,7 @@ export default function AboutUs() {
                   Lingkung Seni Mahasiswa (LISMA) adalah sebuah organisasi Universitas Pasundan Bandung yang mewadahi minat dan bakat anggotanya dibidang seni.
                 </p>
                 <p>
-                  Lisma merupakan salah satu unit kegiatan mahasiswa yang ada di Universitas Pasundan yang merupakan perkembangan dari "Klinik Teater" yang berdiri dari tahun 1979 yang bergerak dibidang teater atau seni pemeranan, kemudian sejak tanggal 19 April 1984 "Klinik Teater" berubah menjadi Lingkung Seni Mahasiswa. 
+                  Lisma merupakan salah satu unit kegiatan mahasiswa yang ada di Universitas Pasundan yang merupakan perkembangan dari &quot;Klinik Teater&quot; yang berdiri dari tahun 1979 yang bergerak dibidang teater atau seni pemeranan, kemudian sejak tanggal 19 April 1984 &quot;Klinik Teater&quot; berubah menjadi Lingkung Seni Mahasiswa. 
                 </p>
                 <p>
                   Tidak hanya nama yang berubah tapi juga ada penambahan bidang kesenian yaitu Kesenian Daerah Sunda (KDS) dan Paduan Suara dan Musik (PSM).

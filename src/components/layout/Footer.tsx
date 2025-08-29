@@ -1,9 +1,6 @@
-import Link from 'next/link';
-import Container from '../common/Container';
-import { MotionDiv, container, item } from '../common/MotionComponents';
+import { MotionDiv } from '../common/MotionComponents';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
   
   const footerContainer = {
     hidden: { opacity: 0 },
@@ -22,7 +19,7 @@ export default function Footer() {
   
   return (
     <footer className="bg-gray-50 text-gray-700">
-      <Container>
+      <div className="container mx-auto px-4">
         <MotionDiv 
           variants={footerContainer}
           initial="hidden"
@@ -100,7 +97,7 @@ export default function Footer() {
             </div>
           </div>
         </MotionDiv>
-      </Container>
+      </div>
     </footer>
   );
 }

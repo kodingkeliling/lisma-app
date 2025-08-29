@@ -9,10 +9,9 @@ import { useEffect, useState, useRef } from 'react';
 export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [navSize, setNavSize] = useState('h-24');
-  const [logoSize, setLogoSize] = useState('text-2xl');
   const menuRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
@@ -54,18 +53,11 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-      
       // Animasi perubahan ukuran navbar
       if (window.scrollY > 50) {
         setNavSize('h-16');
-        setLogoSize('text-xl');
       } else {
         setNavSize('h-24');
-        setLogoSize('text-2xl');
       }
     };
 
