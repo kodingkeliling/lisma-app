@@ -1,16 +1,56 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Container from '../common/Container';
 import { useEffect, useState, useRef } from 'react';
 
 export default function Navbar() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [navSize, setNavSize] = useState('h-24');
   const [logoSize, setLogoSize] = useState('text-2xl');
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    
+    // If we're on the home page, just scroll to the section
+    if (pathname === '/') {
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If we're on a different page, navigate to home with the hash
+      router.push(`/#${hash}`);
+      // The actual scrolling will be handled by the effect below
+    }
+  };
+
+  // Handle scroll to hash when page loads with a hash
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    // Run once on mount
+    handleHashChange();
+
+    // Also handle hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,38 +118,42 @@ export default function Navbar() {
           </Link>
           
           <nav className="hidden md:flex items-center space-x-12">
-            <Link 
-              href="/#tentang" 
+            <a 
+              href="#tentang"
+              onClick={(e) => handleScroll(e, 'tentang')}
               className={`text-[18px] font-semibold transition-colors hover:text-lisma ${
                 scrolled ? 'text-lisma-text' : 'text-lisma-text'
               }`}
             >
               Tentang Kami
-            </Link>
-            <Link 
-              href="/#unit" 
+            </a>
+            <a 
+              href="#unit"
+              onClick={(e) => handleScroll(e, 'unit')}
               className={`text-[18px] font-semibold transition-colors hover:text-lisma ${
                 scrolled ? 'text-lisma-text' : 'text-lisma-text'
               }`}
             >
               Unit Kegiatan
-            </Link>
-            <Link 
-              href="/#tim" 
+            </a>
+            <a 
+              href="#tim"
+              onClick={(e) => handleScroll(e, 'tim')}
               className={`text-[18px] font-semibold transition-colors hover:text-lisma ${
                 scrolled ? 'text-lisma-text' : 'text-lisma-text'
               }`}
             >
               Tim Kami
-            </Link>
-            <Link 
-              href="/#faq" 
+            </a>
+            <a 
+              href="#faq"
+              onClick={(e) => handleScroll(e, 'faq')}
               className={`text-[18px] font-semibold transition-colors hover:text-lisma ${
                 scrolled ? 'text-lisma-text' : 'text-lisma-text'
               }`}
             >
               FAQ
-            </Link>
+            </a>
           </nav>
 
           {/* Mobile menu button */}
@@ -152,34 +196,34 @@ export default function Navbar() {
           }`}
         >
           <div className="px-4 pt-2 pb-4 space-y-2 bg-white">
-            <Link
-              href="/#tentang"
+            <a
+              href="#tentang"
               className="block px-3 py-2 text-lisma-text hover:text-lisma font-medium"
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleScroll(e, 'tentang')}
             >
               Tentang Kami
-            </Link>
-            <Link
-              href="/#unit"
+            </a>
+            <a
+              href="#unit"
               className="block px-3 py-2 text-lisma-text hover:text-lisma font-medium"
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleScroll(e, 'unit')}
             >
               Unit Kegiatan
-            </Link>
-            <Link
-              href="/#tim"
+            </a>
+            <a
+              href="#tim"
               className="block px-3 py-2 text-lisma-text hover:text-lisma font-medium"
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleScroll(e, 'tim')}
             >
               Tim Kami
-            </Link>
-            <Link
-              href="/#faq"
+            </a>
+            <a
+              href="#faq"
               className="block px-3 py-2 text-lisma-text hover:text-lisma font-medium"
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleScroll(e, 'faq')}
             >
               FAQ
-            </Link>
+            </a>
           </div>
         </div>
       </Container>

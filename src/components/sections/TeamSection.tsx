@@ -3,126 +3,129 @@ import Image from 'next/image';
 
 const team = [
   {
-    name: 'Budi Santoso',
+    name: 'Ferdiansyah S',
     role: 'Ketua Umum',
-    image: '/images/team/budi-santoso.jpg',
+    image: '/images/unknown-profile.jpg',
     instagram: 'budisantoso'
   },
   {
-    name: 'Dewi Lestari',
+    name: 'Nabilla Aurellias',
     role: 'Sekretaris Umum',
-    image: '/images/team/dewi-lestari.jpg',
+    image: '/images/unknown-profile.jpg',
     instagram: 'dewi.lestari'
   },
   {
-    name: 'Ahmad Fauzi',
+    name: 'Zhalca Fakitha',
     role: 'Bendahara Umum',
-    image: '/images/team/ahmad-fauzi.jpg',
+    image: '/images/unknown-profile.jpg',
     instagram: 'ahmadfauzi'
   },
   {
-    name: 'Siti Rahayu',
+    name: 'Reza Surya',
     role: 'Ketua 1',
-    image: '/images/team/siti-rahayu.jpg',
+    image: '/images/unknown-profile.jpg',
     instagram: 'siti.rahayu'
   },
   {
-    name: 'Budi Santoso',
+    name: 'Jidan Julian',
     role: 'Ketua 2',
-    image: '/images/team/budi-santoso.jpg',
+    image: '/images/unknown-profile.jpg',
     instagram: 'budisantoso2'
   },
   {
-    name: 'Dewi Lestari',
+    name: 'Ilma Hasna',
     role: 'Ketua 3',
-    image: '/images/team/dewi-lestari.jpg',
-    instagram: 'dewi.lestari'
+    image: '/images/unknown-profile.jpg',
+    instagram: 'dewi.lestari2'
   },
   {
-    name: 'Ahmad Fauzi',
+    name: 'Nabilla Aurellias',
     role: 'Koordinator Tesas',
-    image: '/images/team/ahmad-fauzi.jpg',
-    instagram: 'ahmadfauzi.tesas'
+    image: '/images/unknown-profile.jpg',
+    instagram: 'ahmadfauzi2'
   },
   {
     name: 'Siti Rahayu',
     role: 'Wakil Koordinator Tesas',
-    image: '/images/team/siti-rahayu.jpg',
-    instagram: 'siti.rahayu.tesas'
+    image: '/images/unknown-profile.jpg',
+    instagram: 'siti.rahayu2'
   },
   {
     name: 'Budi Santoso',
     role: 'Koordinator KDS',
-    image: '/images/team/budi-santoso.jpg',
-    instagram: 'budisantoso.kds'
+    image: '/images/unknown-profile.jpg',
+    instagram: 'budisantoso3'
   },
   {
     name: 'Dewi Lestari',
     role: 'Wakil Koordinator KDS',
-    image: '/images/team/dewi-lestari.jpg',
-    instagram: 'dewi.lestari.kds'
+    image: '/images/unknown-profile.jpg',
+    instagram: 'dewi.lestari.tesas'
   },
   {
     name: 'Ahmad Fauzi',
     role: 'Koordinator PSM',
-    image: '/images/team/ahmad-fauzi.jpg',
-    instagram: 'ahmadfauzi.psm'
+    image: '/images/unknown-profile.jpg',
+    instagram: 'ahmadfauzi.tesas'
   },
   {
     name: 'Siti Rahayu',
-    role: 'Wakil Koordinator Psm',
-    image: '/images/team/siti-rahayu.jpg',
+    role: 'Wakil Koordinator PSM',
+    image: '/images/unknown-profile.jpg',
     instagram: 'siti.rahayu.psm'
   },
   {
     name: 'Budi Santoso',
     role: 'Koordinator Takre',
-    image: '/images/team/budi-santoso.jpg',
+    image: '/images/unknown-profile.jpg',
     instagram: 'budisantoso.takre'
   },
   {
     name: 'Dewi Lestari',
     role: 'Koordinator FG',
-    image: '/images/team/dewi-lestari.jpg',
+    image: '/images/unknown-profile.jpg',
     instagram: 'dewi.lestari.fg'
   },
   {
-    name: 'Dewi Lestari',
-    role: 'Sarana Prasarana',
-    image: '/images/team/dewi-lestari.jpg',
-    instagram: 'dewi.lestari.sarpras'
-  },
-  {
     name: 'Ahmad Fauzi',
-    role: 'Digital Content',
-    image: '/images/team/ahmad-fauzi.jpg',
-    instagram: 'ahmadfauzi.digital'
+    role: 'Sarana Prasarana',
+    image: '/images/unknown-profile.jpg',
+    instagram: 'ahmadfauzi.sarpras'
   },
   {
     name: 'Siti Rahayu',
-    role: 'Humas Internal',
-    image: '/images/team/siti-rahayu.jpg',
-    instagram: 'siti.rahayu.humas'
+    role: 'Digital Content',
+    image: '/images/unknown-profile.jpg',
+    instagram: 'siti.rahayu.digital'
   },
   {
     name: 'Budi Santoso',
-    role: 'Humas Eksternal',
-    image: '/images/team/budi-santoso.jpg',
+    role: 'Humas Internal',
+    image: '/images/unknown-profile.jpg',
     instagram: 'budisantoso.humas'
+  },
+  {
+    name: 'Dewi Lestari',
+    role: 'Humas Eksternal',
+    image: '/images/unknown-profile.jpg',
+    instagram: 'dewi.lestari.humas'
   },
 ];
 
 export default function TeamSection() {
   return (
-    <section id="tim" className="py-20 bg-white">
+    <section id="tim" className="py-16 bg-white">
       <Container>
         <div className="mx-auto max-w-4xl text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Dewan Pengurus Harian
           </h2>
+          <p className="text-gray-500 mt-2">
+            Dewan Pengurus Harian LISMA 2024/2025
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-8 md:px-12">
           {team.map((member, index) => (
             <div 
               key={index}
@@ -133,8 +136,8 @@ export default function TeamSection() {
                 <Image
                   src={member.image}
                   alt={member.name}
-                  width={300}
-                  height={400}
+                  width={200}
+                  height={266}
                   className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>

@@ -2,32 +2,33 @@
 
 import Container from '../common/Container';
 import { motion } from 'framer-motion';
+import React from 'react';
 
 const units = [
   {
     name: 'Kesenian Daerah Sunda',
     description: 'Mengembangkan dan melestarikan seni tari tradisional Indonesia dengan kreasi kontemporer.',
-    icon: '🕺',
+    bgImage: '/images/kds.jpg',
   },
   {
     name: 'Teater & Sastra',
     description: 'Wadah berekspresi melalui seni peran dengan berbagai pementasan teater modern dan tradisional.',
-    icon: '🎭',
+    bgImage: '/images/tesas.jpg',
   },
   {
     name: 'Paduan Suara & Musik',
     description: 'Menggali dan mengembangkan musik tradisional dengan sentuhan modern yang inovatif.',
-    icon: '🎵',
+    bgImage: '/images/psm.jpg',
   },
   {
     name: 'Tari Kreasi',
     description: 'Mengasah vokal dan harmoni dalam paduan suara dengan berbagai repertoar musik.',
-    icon: '🎤',
+    bgImage: '/images/takre.jpg',
   },
   {
     name: 'Fotografi',
     description: 'Belajar teknik fotografi dan pembuatan film dari dasar hingga produksi.',
-    icon: '🎬',
+    bgImage: '/images/fg.jpg',
   },
 ];
 
@@ -43,7 +44,41 @@ const fadeIn = {
   }),
 } as const;
 
+function ImageWithFallback({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const [imageError, setImageError] = React.useState(false);
+  
+  return (
+    <div className={className}>
+      {!imageError ? (
+        <img
+          src={src}
+          alt={alt}
+          onError={() => {
+            console.error(`Failed to load image: ${src}`);
+            setImageError(true);
+          }}
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+          <span className="text-gray-500">Image not found</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function UnitSection() {
+  // Debug: Log the image paths
+  React.useEffect(() => {
+    units.forEach(unit => {
+      const img = new Image();
+      img.onload = () => console.log(`Loaded: ${unit.bgImage}`);
+      img.onerror = () => console.error(`Failed to load: ${unit.bgImage}`);
+      img.src = unit.bgImage;
+    });
+  }, []);
+
   return (
     <section id="unit" className="py-20 bg-gray-50">
       <Container>
@@ -62,41 +97,51 @@ export default function UnitSection() {
                 {units.slice(0, 3).map((unit, index) => (
                   <motion.div
                     key={unit.name}
-                    className="flex flex-col items-center text-center rounded-2xl bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 h-full"
-                    variants={fadeIn}
+                    className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-64 group"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     custom={index}
                   >
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-lisma/10 text-lisma text-2xl mb-4">
-                      {unit.icon}
+                    <div className="absolute inset-0 overflow-hidden transition-transform duration-700 group-hover:scale-110">
+                      <ImageWithFallback 
+                        src={unit.bgImage}
+                        alt={unit.name}
+                        className="w-full h-full"
+                      />
+                      <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px] transition-all duration-300 group-hover:bg-black/70 flex flex-col justify-center items-center p-6 text-center">
+                        <h3 className="text-xl font-bold text-white mb-3">{unit.name}</h3>
+                        <p className="text-gray-200">{unit.description}</p>
+                      </div>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900">{unit.name}</h3>
-                    <p className="mt-2 text-sm text-gray-600">{unit.description}</p>
                   </motion.div>
                 ))}
               </div>
               
               {/* Second Row - 2 Units (centered) */}
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:max-w-2xl sm:mx-auto">
-              {units.slice(3).map((unit, index) => (
-                <motion.div
-                  key={unit.name}
-                  className="flex flex-col items-center text-center rounded-2xl bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 h-full"
-                  variants={fadeIn}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={index + 3}
-                >
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-lisma/10 text-lisma text-2xl mb-4">
-                    {unit.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900">{unit.name}</h3>
-                  <p className="mt-2 text-sm text-gray-600">{unit.description}</p>
-                </motion.div>
-              ))}
+                {units.slice(3).map((unit, index) => (
+                  <motion.div
+                    key={unit.name}
+                    className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-64 group"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={index + 3}
+                  >
+                    <div className="absolute inset-0 overflow-hidden transition-transform duration-700 group-hover:scale-110">
+                      <ImageWithFallback 
+                        src={unit.bgImage}
+                        alt={unit.name}
+                        className="w-full h-full"
+                      />
+                      <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px] transition-all duration-300 group-hover:bg-black/70 flex flex-col justify-center items-center p-6 text-center">
+                        <h3 className="text-xl font-bold text-white mb-3">{unit.name}</h3>
+                        <p className="text-gray-200">{unit.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>

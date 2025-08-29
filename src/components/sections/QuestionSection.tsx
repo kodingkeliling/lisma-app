@@ -52,7 +52,7 @@ export default function QuestionSection() {
   };
 
   return (
-    <section id="faq" className="py-20 bg-gray-50">
+    <section id="faq" className="py-20 bg-white">
       <Container>
         <MotionDiv 
           initial={{ opacity: 0, y: 20 }}
@@ -109,27 +109,6 @@ export default function QuestionSection() {
             </div>
           ))}
         </div>
-
-        <MotionDiv
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-16 text-center px-4 sm:px-6 lg:px-8"
-        >
-          <p className="text-gray-600 mb-6 text-lg">
-            Masih ada pertanyaan lain?
-          </p>
-          <a
-            href="#kontak"
-            className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 transform hover:-translate-y-1"
-          >
-            Hubungi Kami
-            <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </a>
-        </MotionDiv>
       </Container>
     </section>
   );

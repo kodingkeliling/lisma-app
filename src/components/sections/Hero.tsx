@@ -17,12 +17,12 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center justify-between h-full px-8 md:px-12">
           <div className="lg:w-5/12 xl:w-2/5 text-left">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-lisma-text">
-              <div className="leading-tight">Lingkung Seni</div>
-              <div className="mt-3 sm:mt-2">Mahasiswa</div>
+              <div className="whitespace-nowrap">Lingkung Seni</div>
+              <div className="whitespace-nowrap">Mahasiswa</div>
             </h1>
             <div className="mt-8">
               <Link 
-                href="/#daftar"
+                href="/pendaftaran"
                 className="inline-flex items-center justify-center rounded-md bg-lisma hover:bg-lisma-dark px-8 py-3 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-lisma-light focus:ring-offset-2 transition-colors duration-200"
               >
                 Daftar Sekarang

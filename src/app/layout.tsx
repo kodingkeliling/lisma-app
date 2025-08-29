@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'id_ID',
-    url: 'https://lisma.unpas.ac.id',
+    url: 'https://www.lismaunpas.com/',
     title: 'LISMA UNPAS - Lingkung Seni Mahasiswa',
     description: 'Wadah kreativitas dan pengembangan bakat seni mahasiswa Universitas Pasundan',
     siteName: 'LISMA UNPAS',
