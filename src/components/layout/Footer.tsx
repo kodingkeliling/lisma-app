@@ -1,7 +1,7 @@
 import { MotionDiv } from '../common/MotionComponents';
+import Container from '../common/Container';
 
 export default function Footer() {
-  
   const footerContainer = {
     hidden: { opacity: 0 },
     show: {
@@ -18,17 +18,16 @@ export default function Footer() {
   };
   
   return (
-    <footer className="bg-gray-50 text-gray-700">
-      <div className="container mx-auto px-4">
+    <footer className="bg-gray-50 text-gray-700 w-full">
+      <Container className="py-12">
         <MotionDiv 
           variants={footerContainer}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="py-16"
+          className="px-4 md:px-6 lg:px-12"
         >
-          <div className="px-8 md:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Brand Info */}
             <MotionDiv variants={footerItem} className="md:col-span-2">
               <h3 className="text-2xl font-bold text-gray-900">LISMA</h3>
@@ -88,16 +87,15 @@ export default function Footer() {
                 </a>
               </div>
             </MotionDiv>
-            </div>
           </div>
-
+          
           <div className="mt-12 pt-8 border-t border-gray-200">
             <div className="text-center text-gray-500 text-sm">
               &copy; {new Date().getFullYear()} Lembaga Ilmiah Mahasiswa (LISMA) Universitas Pasundan. All rights reserved.
             </div>
           </div>
         </MotionDiv>
-      </div>
+      </Container>
     </footer>
   );
 }

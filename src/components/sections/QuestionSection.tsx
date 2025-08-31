@@ -18,7 +18,7 @@ const faqs = [
   {
     question: 'Apakah ada biaya pendaftaran?',
     answer:
-      'Ada biaya pendaftaran sebesar Rp 50.000 untuk biaya administrasi dan mendapatkan kartu anggota. Biaya ini hanya dibayarkan sekali saat mendaftar.',
+      'Ada biaya pendaftaran sebesar Rp 30.000 untuk biaya administrasi dan mendapatkan kartu anggota. Biaya ini hanya dibayarkan sekali saat mendaftar.',
   },
   {
     question: 'Apa saja unit kegiatan yang ada di LISMA?',
@@ -42,20 +42,21 @@ export default function QuestionSection() {
   return (
     <section id="faq" className="py-20 bg-white">
       <Container>
-        <MotionDiv 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Pertanyaan yang Sering Ditanyakan</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Temukan jawaban atas pertanyaan umum seputar LISMA dan kegiatan kami.
-          </p>
-        </MotionDiv>
+        <div className="px-8 md:px-12">
+          <MotionDiv 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Pertanyaan yang Sering Ditanyakan</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Temukan jawaban atas pertanyaan umum seputar LISMA dan kegiatan kami.
+            </p>
+          </MotionDiv>
 
-        <div className="max-w-3xl mx-auto">
+          <div className="w-full max-w-3xl mx-auto">
           {faqs.map((faq, index) => (
             <div key={index} className="mb-4">
               <button
@@ -96,6 +97,7 @@ export default function QuestionSection() {
               </AnimatePresence>
             </div>
           ))}
+          </div>
         </div>
       </Container>
     </section>

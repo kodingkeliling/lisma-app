@@ -9,7 +9,7 @@ import { useEffect, useState, useRef } from 'react';
 export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
-  const [scrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [navSize, setNavSize] = useState('h-24');
   const menuRef = useRef<HTMLDivElement>(null);
@@ -54,13 +54,19 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       // Animasi perubahan ukuran navbar
-      if (window.scrollY > 50) {
+      const isScrolled = window.scrollY > 50;
+      setScrolled(isScrolled);
+      
+      if (isScrolled) {
         setNavSize('h-16');
       } else {
         setNavSize('h-24');
       }
     };
 
+    // Set initial state
+    handleScroll();
+    
     document.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       document.removeEventListener('scroll', handleScroll);

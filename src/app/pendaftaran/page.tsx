@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { Toaster } from 'react-hot-toast';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function RegistrationPage() {
-  const router = useRouter();
   const [accessCode, setAccessCode] = useState('');
   const [showModal, setShowModal] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -33,10 +33,54 @@ export default function RegistrationPage() {
     console.log('Access code:', accessCode);
   };
 
+  // Custom Navbar for registration page
+  const RegistrationNavbar = () => (
+    <nav className="bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex-shrink-0 flex items-center">
+            <Link href="/">
+              <div className="relative h-12 w-32">
+                <Image 
+                  src="/images/lisma.png" 
+                  alt="LISMA Logo"
+                  fill
+                  className="object-contain object-left"
+                  priority
+                />
+              </div>
+            </Link>
+          </div>
+          <div className="flex items-center">
+            <Link 
+              href="/" 
+              className="text-gray-700 hover:text-lisma transition-colors"
+            >
+              Beranda
+            </Link>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+
+  // Simple Footer for registration page
+  const RegistrationFooter = () => (
+    <footer className="bg-gray-50 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <p className="text-center text-sm text-gray-500">
+          &copy; {new Date().getFullYear()} Lembaga Ilmiah Mahasiswa (LISMA) Universitas Pasundan. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md mx-4 md:mx-0 overflow-hidden">
-        <div className="p-8">
+    <div className="h-screen flex flex-col overflow-hidden">
+      <RegistrationNavbar />
+      <main className="flex-1 flex items-center justify-center p-4 bg-gray-50 overflow-auto">
+        <div className="w-full max-w-md bg-white rounded-lg shadow-md overflow-y-auto max-h-[calc(100vh-8rem)]">
+          <div className="p-6 sm:p-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-lisma-text">
               <span className="block">Pendaftaran</span>
@@ -79,18 +123,6 @@ export default function RegistrationPage() {
                 className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-base font-medium rounded-lg text-white bg-lisma hover:bg-lisma-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lisma transition-colors"
               >
                 Login
-              </button>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  router.push('/');
-                }}
-                className="w-full flex items-center justify-center text-lisma-text hover:text-lisma-dark transition-colors text-sm py-2"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
-                </svg>
-                Kembali ke Beranda
               </button>
             </div>
           </form>
@@ -139,7 +171,15 @@ export default function RegistrationPage() {
           </div>
         </div>
       )}
+      </main>
+      <RegistrationFooter />
       <Toaster position="top-center" />
+      <style jsx global>{`
+        html, body {
+          height: 100%;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 }

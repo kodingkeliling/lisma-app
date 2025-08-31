@@ -79,18 +79,17 @@ export default function UnitSection() {
   return (
     <section id="unit" className="py-20 bg-gray-50">
       <Container>
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Unit Kegiatan Kami</h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600">
-              Lingkung Seni Mahasiswa memilik 5 unit kesenian, sebagai berikut:
-              </p>
-            </div>
-            
-            <div className="mx-auto mt-16 max-w-5xl space-y-8">
-              {/* First Row - 3 Units */}
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+        <div className="px-8 md:px-12 w-full">
+          <div className="w-full max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Unit Kegiatan Kami</h2>
+            <p className="mt-4 text-lg leading-8 text-gray-600">
+              Lingkung Seni Mahasiswa memiliki 5 unit kesenian, sebagai berikut:
+            </p>
+          </div>
+          
+          <div className="w-full mt-16 space-y-8">
+            {/* First Row - 3 Units */}
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
                 {units.slice(0, 3).map((unit, index) => (
                   <motion.div
                     key={unit.name}
@@ -115,35 +114,34 @@ export default function UnitSection() {
                 ))}
               </div>
               
-              {/* Second Row - 2 Units (centered) */}
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:max-w-2xl sm:mx-auto">
-                {units.slice(3).map((unit, index) => (
-                  <motion.div
-                    key={unit.name}
-                    className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-64 group"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={index + 3}
-                  >
-                    <div className="absolute inset-0 overflow-hidden transition-transform duration-700 group-hover:scale-110">
-                      <ImageWithFallback 
-                        src={unit.bgImage}
-                        alt={unit.name}
-                        className="w-full h-full"
-                      />
-                      <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px] transition-all duration-300 group-hover:bg-black/70 flex flex-col justify-center items-center p-6 text-center">
-                        <h3 className="text-xl font-bold text-white mb-3">{unit.name}</h3>
-                        <p className="text-gray-200">{unit.description}</p>
+              {/* Second Row - 2 Units */}
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 max-w-2xl mx-auto">
+                  {units.slice(3).map((unit, index) => (
+                    <motion.div
+                      key={unit.name}
+                      className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-64 group"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      custom={index + 3}
+                    >
+                      <div className="absolute inset-0 overflow-hidden transition-transform duration-700 group-hover:scale-110">
+                        <ImageWithFallback 
+                          src={unit.bgImage}
+                          alt={unit.name}
+                          className="w-full h-full"
+                        />
+                        <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px] transition-all duration-300 group-hover:bg-black/70 flex flex-col justify-center items-center p-6 text-center">
+                          <h3 className="text-xl font-bold text-white mb-3">{unit.name}</h3>
+                          <p className="text-gray-200">{unit.description}</p>
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </Container>
-    </section>
+        </Container>
+      </section>
   );
 }
