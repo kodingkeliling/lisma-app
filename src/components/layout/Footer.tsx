@@ -25,7 +25,7 @@ export default function Footer() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="px-4 md:px-6 lg:px-12"
+          className="md:px-6 lg:px-12"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Brand Info */}
@@ -51,13 +51,22 @@ export default function Footer() {
                     <p>Indonesia</p>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <svg className="h-5 w-5 text-lisma mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <div className="text-gray-600">
-                    <p>Phone: Ilma Hasna</p>
-                    <p>Email: <a href="mailto:lisma@unpas.ac.id" className="text-lisma hover:underline">lisma@unpas.ac.id</a></p>
+                <div className="space-y-2">
+                  <div className="flex items-center">
+                    <svg className="h-5 w-5 text-lisma mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <a href="tel:+6281234567890" className="text-gray-600 hover:text-lisma transition-colors">
+                      +62 821-2141-6549
+                    </a>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="h-5 w-5 text-lisma mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <a href="mailto:lisma@unpas.ac.id" className="text-gray-600 hover:text-lisma transition-colors">
+                      lisma@unpas.ac.id
+                    </a>
                   </div>
                 </div>
               </address>
@@ -68,7 +77,9 @@ export default function Footer() {
               <h3 className="text-lg font-semibold text-gray-900 mb-6">Ikuti Kami</h3>
               <div className="flex space-x-4">
                 <a 
-                  href="#" 
+                  href="https://www.instagram.com/lismaunpas/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-gray-200 hover:bg-lisma hover:text-white text-gray-700 p-3 rounded-full transition-colors duration-300"
                   aria-label="Instagram"
                 >
@@ -77,7 +88,9 @@ export default function Footer() {
                   </svg>
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.youtube.com/@lingkungsenimahasiswa8569" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-gray-200 hover:bg-lisma hover:text-white text-gray-700 p-3 rounded-full transition-colors duration-300"
                   aria-label="YouTube"
                 >
@@ -90,10 +103,22 @@ export default function Footer() {
           </div>
           
           <div className="mt-12 pt-8 border-t border-gray-200">
-            <div className="text-center text-gray-500 text-sm">
-              &copy; {new Date().getFullYear()} Lembaga Ilmiah Mahasiswa (LISMA) Universitas Pasundan. All rights reserved.
-            </div>
-          </div>
+  <div className="w-full py-4 sm:py-6">
+    <p className="text-center text-gray-500 text-[10px] sm:text-[12px] md:text-[13px] whitespace-nowrap px-2">
+      &copy; {new Date().getFullYear()} Copyright{" "}
+      <span className="font-bold">LISMA UNPAS</span>. Powered by{" "}
+      <a 
+        href="https://www.kodingkeliling.com/" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="text-lisma font-bold"
+      >
+        Koding Keliling
+      </a>
+    </p>
+  </div>
+</div>
+
         </MotionDiv>
       </Container>
     </footer>

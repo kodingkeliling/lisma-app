@@ -1,9 +1,11 @@
-'use client';
+"use client";
 
 import { useState, useRef, useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Image from 'next/image';
 import Link from 'next/link';
+import Navbar from '@/components/registration/Navbar';
+import Footer from '@/components/registration/Footer';
 
 export default function RegistrationPage() {
   const [accessCode, setAccessCode] = useState('');
@@ -12,11 +14,11 @@ export default function RegistrationPage() {
 
   // Close modal when clicking outside
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    const handleClickOutside = (event: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
         setShowModal(false);
       }
-    }
+    };
 
     if (showModal) {
       document.addEventListener('mousedown', handleClickOutside);
@@ -27,157 +29,115 @@ export default function RegistrationPage() {
     };
   }, [showModal]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Handle form submission
     console.log('Access code:', accessCode);
   };
 
-  // Custom Navbar for registration page
-  const RegistrationNavbar = () => (
-    <nav className="bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex-shrink-0 flex items-center">
-            <Link href="/">
-              <div className="relative h-12 w-32">
-                <Image 
-                  src="/images/lisma.png" 
-                  alt="LISMA Logo"
-                  fill
-                  className="object-contain object-left"
-                  priority
-                />
-              </div>
-            </Link>
-          </div>
-          <div className="flex items-center">
-            <Link 
-              href="/" 
-              className="text-gray-700 hover:text-lisma transition-colors"
-            >
-              Beranda
-            </Link>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-
-  // Simple Footer for registration page
-  const RegistrationFooter = () => (
-    <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} Lembaga Ilmiah Mahasiswa (LISMA) Universitas Pasundan. All rights reserved.
-        </p>
-      </div>
-    </footer>
-  );
-
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
-      <RegistrationNavbar />
-      <main className="flex-1 flex items-center justify-center p-4 bg-gray-50 overflow-auto">
-        <div className="w-full max-w-md bg-white rounded-lg shadow-md overflow-y-auto max-h-[calc(100vh-8rem)]">
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-grow flex items-center justify-center p-4 bg-gray-50">
+        <div className="w-full max-w-md bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-6 sm:p-8">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-lisma-text">
-              <span className="block">Pendaftaran</span>
-              <span className="block mt-2 text-2xl font-semibold text-lisma">Mahasiswa Baru</span>
-            </h2>
-          </div>
-          
-          <form className="space-y-8" onSubmit={handleSubmit}>
-            <div className="space-y-6">
-              <div>
-                <label htmlFor="access-code" className="block text-sm font-medium text-lisma-text mb-2">
-                  Masukan Kode Akses
-                </label>
-                <input
-                  id="access-code"
-                  name="access-code"
-                  type="text"
-                  required
-                  className="appearance-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-400 text-lisma-text rounded-lg focus:outline-none focus:ring-2 focus:ring-lisma focus:border-lisma focus:z-10 text-base"
-                  placeholder="Kode akses Anda"
-                  value={accessCode}
-                  onChange={(e) => setAccessCode(e.target.value)}
-                />
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold text-lisma-text">
+                <span className="block">Pendaftaran</span>
+                <span className="block mt-2 text-2xl font-semibold text-lisma">Mahasiswa Baru</span>
+              </h2>
+            </div>
+            
+            <form className="space-y-8" onSubmit={handleSubmit}>
+              <div className="space-y-6">
+                <div>
+                  <label htmlFor="access-code" className="block text-sm font-medium text-lisma-text mb-2">
+                    Masukan Kode Akses
+                  </label>
+                  <input
+                    id="access-code"
+                    name="access-code"
+                    type="text"
+                    required
+                    className="appearance-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-400 text-lisma-text rounded-lg focus:outline-none focus:ring-2 focus:ring-lisma focus:border-lisma focus:z-10 text-base"
+                    placeholder="Kode akses Anda"
+                    value={accessCode}
+                    onChange={(e) => setAccessCode(e.target.value)}
+                  />
+                </div>
+                
+                <div className="text-center pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowModal(true)}
+                    className="text-sm font-medium text-lisma hover:text-lisma-dark transition-colors"
+                  >
+                    Belum memiliki kode akses? Klik sini
+                  </button>
+                </div>
               </div>
-              
-              <div className="text-center pt-2">
+
+              <div className="space-y-4 pt-4">
                 <button
-                  type="button"
-                  onClick={() => setShowModal(true)}
-                  className="text-sm font-medium text-lisma hover:text-lisma-dark transition-colors"
+                  type="submit"
+                  className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-base font-medium rounded-lg text-white bg-lisma hover:bg-lisma-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lisma transition-colors"
                 >
-                  Belum memiliki kode akses? Klik sini
+                  Login
                 </button>
               </div>
-            </div>
-
-            <div className="space-y-4 pt-4">
-              <button
-                type="submit"
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-base font-medium rounded-lg text-white bg-lisma hover:bg-lisma-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lisma transition-colors"
-              >
-                Login
-              </button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
 
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div 
-            ref={modalRef}
-            className="bg-white rounded-lg max-w-md w-full p-6 relative animate-fade-in"
-          >
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-              aria-label="Tutup"
+        {/* Modal */}
+        {showModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div 
+              ref={modalRef}
+              className="bg-white rounded-lg max-w-md w-full p-6 relative"
             >
-              <span className="text-2xl">&times;</span>
-            </button>
-            
-            <h3 className="text-lg font-bold mb-4">Kode Akses</h3>
-            
-            <div className="space-y-4 text-sm text-gray-700">
-              <p>Lakukan pembelian kode akses seharga Rp. 30.000 melalui:</p>
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+                aria-label="Tutup"
+              >
+                <span className="text-2xl">&times;</span>
+              </button>
               
-              <div className="bg-gray-50 p-4 rounded-md">
-                <p className="font-medium">BCA: 4373094547</p>
-                <p className="text-gray-600">a/n Rizkiani Tri</p>
+              <h3 className="text-lg font-bold mb-4">Kode Akses</h3>
+              
+              <div className="space-y-4 text-sm text-gray-700">
+                <p>Lakukan pembelian kode akses seharga Rp. 30.000 melalui:</p>
                 
-                <div className="my-3 border-t border-gray-200"></div>
+                <div className="bg-gray-50 p-4 rounded-md">
+                  <p className="font-medium">BCA: 4373094547</p>
+                  <p className="text-gray-600">a/n Rizkiani Tri</p>
+                  
+                  <div className="my-3 border-t border-gray-200"></div>
+                  
+                  <p className="font-medium">DANA: 081322593964</p>
+                  <p className="text-gray-600">a/n Rizkiani Tri</p>
+                </div>
                 
-                <p className="font-medium">DANA: 081322593964</p>
-                <p className="text-gray-600">a/n Rizkiani Tri</p>
-              </div>
-              
-              <p>
-                Jika sudah melakukan pembayaran, silakan konfirmasi pembayaran ke Contact Person untuk mendapatkan kode akses.
-              </p>
-              
-              <div className="mt-4 p-3 bg-blue-50 rounded-md">
-                <p className="font-medium">Contact Person:</p>
-                <p>089667950775 (Talitha R)</p>
+                <p>
+                  Jika sudah melakukan pembayaran, silakan konfirmasi pembayaran ke Contact Person untuk mendapatkan kode akses.
+                </p>
+                
+                <div className="mt-4 p-3 bg-blue-50 rounded-md">
+                  <p className="font-medium">Contact Person:</p>
+                  <p>089667950775 (Talitha R)</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
       </main>
-      <RegistrationFooter />
+      <Footer />
       <Toaster position="top-center" />
       <style jsx global>{`
         html, body {
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
         }
       `}</style>
     </div>

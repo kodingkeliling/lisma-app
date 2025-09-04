@@ -5,110 +5,110 @@ const team = [
   {
     name: 'Ferdiansyah S',
     role: 'Ketua Umum',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'budisantoso'
+    image: '/images/ketum.jpg',
+    instagram: 'fxcix_'
   },
   {
     name: 'Nabilla Aurellias',
     role: 'Sekretaris Umum',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'dewi.lestari'
+    image: '/images/sekum.jpg',
+    instagram: 'nabillaadzp'
   },
   {
     name: 'Zhalca Fakitha',
     role: 'Bendahara Umum',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'ahmadfauzi'
+    image: '/images/bendum.jpg',
+    instagram: 'achafktha'
   },
   {
     name: 'Reza Surya',
     role: 'Ketua 1',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'siti.rahayu'
+    image: '/images/ketu.jpg',
+    instagram: '__snjyrez'
   },
   {
     name: 'Jidan Julian',
     role: 'Ketua 2',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'budisantoso2'
+    image: '/images/uwa.jpg',
+    instagram: 'jidanjulian'
   },
   {
     name: 'Ilma Hasna',
     role: 'Ketua 3',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'dewi.lestari2'
+    image: '/images/kutil.jpg',
+    instagram: 'ilmaasnfh'
   },
   {
     name: 'Nabilla Aurellias',
     role: 'Koordinator Tesas',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'ahmadfauzi2'
+    image: '/images/koor-tesas.jpg',
+    instagram: 'idfa._'
   },
   {
     name: 'Siti Rahayu',
     role: 'Wakil Koordinator Tesas',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'siti.rahayu2'
+    image: '/images/waor-tesas.jpg',
+    instagram: 'hlmaah__'
   },
   {
     name: 'Budi Santoso',
     role: 'Koordinator KDS',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'budisantoso3'
+    image: '/images/koor-kds.jpg',
+    instagram: 'di_x_ka'
   },
   {
     name: 'Dewi Lestari',
     role: 'Wakil Koordinator KDS',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'dewi.lestari.tesas'
+    image: '/images/waor-kds.jpg',
+    instagram: 'laudyasuciii'
   },
   {
     name: 'Ahmad Fauzi',
     role: 'Koordinator PSM',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'ahmadfauzi.tesas'
+    image: '/images/koor-psm.jpg',
+    instagram: '___khyr'
   },
   {
     name: 'Siti Rahayu',
     role: 'Wakil Koordinator PSM',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'siti.rahayu.psm'
+    image: '/images/waor-psm.jpg',
+    instagram: 'yohanart'
   },
   {
     name: 'Budi Santoso',
     role: 'Koordinator Takre',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'budisantoso.takre'
+    image: '/images/koor-takre.jpg',
+    instagram: 'junevads'
   },
   {
     name: 'Dewi Lestari',
     role: 'Koordinator FG',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'dewi.lestari.fg'
+    image: '/images/koor-fg.jpg',
+    instagram: 'raspatiin'
   },
   {
     name: 'Ahmad Fauzi',
     role: 'Sarana Prasarana',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'ahmadfauzi.sarpras'
+    image: '/images/sapra.jpg',
+    instagram: 'i.jarrr_'
   },
   {
     name: 'Siti Rahayu',
     role: 'Digital Content',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'siti.rahayu.digital'
+    image: '/images/dc.jpg',
+    instagram: '_sihsn'
   },
   {
     name: 'Budi Santoso',
     role: 'Humas Internal',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'budisantoso.humas'
+    image: '/images/humi.jpg',
+    instagram: 'aqvaaal'
   },
   {
     name: 'Dewi Lestari',
     role: 'Humas Eksternal',
-    image: '/images/unknown-profile.jpg',
-    instagram: 'dewi.lestari.humas'
+    image: '/images/hume.jpg',
+    instagram: 'keishasndra'
   },
 ];
 
@@ -121,11 +121,11 @@ export default function TeamSection() {
             Dewan Pengurus Harian
           </h2>
           <p className="text-gray-500 mt-2">
-            Dewan Pengurus Harian LISMA 2024/2025
+            Dewan Pengurus Harian LISMA 2025/2026
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-8 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:px-12">
           {team.map((member, index) => (
             <div 
               key={index}
@@ -142,24 +142,28 @@ export default function TeamSection() {
                 />
               </div>
 
-              {/* Overlay dengan animasi naik */}
+              {/* Overlay dengan tinggi fix supaya isi stabil */}
               <div className="absolute bottom-0 left-0 right-0 
                               bg-black/70 backdrop-blur-sm
-                              transform translate-y-16 group-hover:translate-y-0
-                              transition-transform duration-500 ease-out p-4">
-                <h3 className="text-white font-semibold text-center">{member.name}</h3>
-                <p className="text-white/80 text-sm text-center">{member.role}</p>
+                              transform translate-y-16 group-hover:translate-y-4
+                              transition-transform duration-500 ease-out 
+                              p-4 pb-8 min-h-[120px] flex flex-col justify-end">
+                <div className="text-center">
+                  <h3 className="text-white font-semibold">{member.name}</h3>
+                  <p className="text-white/80 text-sm">{member.role}</p>
+                </div>
 
                 {/* Instagram Icon */}
                 <a 
                   href={`https://instagram.com/${member.instagram}`}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="flex justify-center mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  aria-label={`Instagram ${member.name}`}
                 >
-                  <div className="bg-white p-2 rounded-full">
+                  <div className="bg-gray-800 hover:bg-lisma p-2 rounded-full transition-colors duration-300">
                     <svg 
-                      className="w-5 h-5 text-pink-600"
+                      className="w-5 h-5 text-white"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       aria-hidden="true"

@@ -79,7 +79,7 @@ export default function UnitSection() {
   return (
     <section id="unit" className="py-20 bg-gray-50">
       <Container>
-        <div className="px-8 md:px-12 w-full">
+        <div className="md:px-12 w-full">
           <div className="w-full max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Unit Kegiatan Kami</h2>
             <p className="mt-4 text-lg leading-8 text-gray-600">

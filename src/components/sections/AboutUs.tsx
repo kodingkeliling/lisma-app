@@ -5,10 +5,10 @@ export default function AboutUs() {
   return (
     <section id="tentang" className="py-20 bg-white">
       <Container>
-      <div className="px-8 md:px-12">
+      <div className="md:px-12">
       <div className="w-full">
             {/* Logo - Tampil di atas di mobile, di kiri di desktop */}
-            <div className="flex justify-center lg:hidden mb-8">
+            <div className="flex justify-center lg:hidden mb-12">
               <div className="relative w-full max-w-xs h-64">
                 <Image
                   src="/images/lisma.png"
@@ -38,10 +38,10 @@ export default function AboutUs() {
 
               {/* Teks - Selalu di kanan di desktop, di bawah logo di mobile */}
               <div className="lg:flex-1 lg:flex lg:flex-col lg:justify-center">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center lg:text-left">Tentang Kami</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-left lg:text-left">Tentang Kami</h2>
                 
                 <div className="space-y-4 text-base leading-7 text-gray-700 mt-6 text-left">
-                  <p className="text-xl font-medium text-gray-700 text-center lg:text-left">
+                  <p className="text-xl font-medium text-gray-700 text-left lg:text-left">
                     Lingkung Seni Mahasiswa, Universitas Pasundan
                   </p>
                   <p>

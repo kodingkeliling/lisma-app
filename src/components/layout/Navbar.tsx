@@ -95,7 +95,7 @@ export default function Navbar() {
       }`}
     >
       <Container className={`transition-all duration-500 ease-in-out ${navSize}`}>
-        <div className="flex h-full items-center justify-between px-8 md:px-12">
+        <div className="flex h-full items-center justify-between md:px-12">
           <Link 
             href="/" 
             className={`flex items-center transition-all duration-500 ease-in-out ${
