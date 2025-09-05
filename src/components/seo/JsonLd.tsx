@@ -1,8 +1,6 @@
-import { Metadata } from 'next';
-
 interface JsonLdProps {
   type?: string;
-  data: Record<string, any>;
+  data: Record<string, unknown>;
   scriptId?: string;
 }
 
