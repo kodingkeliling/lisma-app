@@ -9,18 +9,6 @@ const team = [
     instagram: 'fxcix_'
   },
   {
-    name: 'Nabilla Aurellias',
-    role: 'Sekretaris Umum',
-    image: '/images/sekum.jpg',
-    instagram: 'nabillaadzp'
-  },
-  {
-    name: 'Zhalca Fakitha',
-    role: 'Bendahara Umum',
-    image: '/images/bendum.jpg',
-    instagram: 'achafktha'
-  },
-  {
     name: 'Reza Surya',
     role: 'Ketua 1',
     image: '/images/ketu.jpg',
@@ -37,6 +25,18 @@ const team = [
     role: 'Ketua 3',
     image: '/images/kutil.jpg',
     instagram: 'ilmaasnfh'
+  },
+  {
+    name: 'Nabilla Aurellias',
+    role: 'Sekretaris Umum',
+    image: '/images/sekum.jpg',
+    instagram: 'nabillaadzp'
+  },
+  {
+    name: 'Zhalca Fakitha',
+    role: 'Bendahara Umum',
+    image: '/images/bendum.jpg',
+    instagram: 'achafktha'
   },
   {
     name: 'Nabilla Aurellias',

@@ -7,14 +7,14 @@ import Image from 'next/image';
 
 const units = [
   {
-    name: 'Kesenian Daerah Sunda',
-    description: 'Mengembangkan dan melestarikan seni tari tradisional Indonesia dengan kreasi kontemporer.',
-    bgImage: '/images/kds.jpg',
-  },
-  {
     name: 'Teater & Sastra',
     description: 'Wadah berekspresi melalui seni peran dengan berbagai pementasan teater modern dan tradisional.',
     bgImage: '/images/tesas.jpg',
+  },
+  {
+    name: 'Kesenian Daerah Sunda',
+    description: 'Mengembangkan dan melestarikan seni tari tradisional Indonesia dengan kreasi kontemporer.',
+    bgImage: '/images/kds.jpg',
   },
   {
     name: 'Paduan Suara & Musik',
