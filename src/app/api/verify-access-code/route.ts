@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     const accessCodes = Array.isArray(data) ? data : data.data || [];
     
     // Check if the provided access code exists in the sheet
-    const isValidCode = accessCodes.some((row: any) => {
+    const isValidCode = accessCodes.some((row: Record<string, unknown>) => {
       // Adjust this based on your sheet structure
       // If your sheet has a column named 'access_code' or similar
       return row.access_code === accessCode || 
