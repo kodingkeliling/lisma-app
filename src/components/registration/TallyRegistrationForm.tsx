@@ -10,7 +10,11 @@ declare global {
   }
 }
 
-export default function TallyRegistrationForm() {
+interface TallyRegistrationFormProps {
+  accessCode: string;
+}
+
+export default function TallyRegistrationForm({ accessCode }: TallyRegistrationFormProps) {
   useEffect(() => {
     // Load Tally script if not already loaded
     const loadTallyScript = () => {
@@ -46,7 +50,7 @@ export default function TallyRegistrationForm() {
       
       <div >
         <iframe
-          data-tally-src="https://tally.so/embed/woqJyM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+          data-tally-src={`https://tally.so/embed/woqJyM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&kode=${encodeURIComponent(accessCode)}`}
           loading="lazy"
           width="100%"
           height="1086"

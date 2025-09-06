@@ -21,38 +21,61 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Fetch data from Google Sheets
-    const response = await fetch(sheetApiUrl, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-      },
-    });
+    // Fetch data from both sheets - kode sheet and anggota sheet
+    const [kodeResponse, anggotaResponse] = await Promise.all([
+      fetch(`${sheetApiUrl}kode`, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+      }),
+      fetch(`${sheetApiUrl}anggota`, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+      })
+    ]);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    if (!kodeResponse.ok || !anggotaResponse.ok) {
+      throw new Error(`HTTP error! kode: ${kodeResponse.status}, anggota: ${anggotaResponse.status}`);
     }
 
-    const data = await response.json();
+    const [kodeData, anggotaData] = await Promise.all([
+      kodeResponse.json(),
+      anggotaResponse.json()
+    ]);
     
-    // Assuming the sheet returns an array of objects with access codes
-    // You may need to adjust this based on your actual sheet structure
-    const accessCodes = Array.isArray(data) ? data : data.data || [];
+    // Get valid codes from kode sheet
+    const validCodes = Array.isArray(kodeData) ? kodeData : kodeData.data || [];
     
-    // Check if the provided access code exists in the sheet
-    const isValidCode = accessCodes.some((row: Record<string, unknown>) => {
-      // Adjust this based on your sheet structure
-      // If your sheet has a column named 'access_code' or similar
-      return row.access_code === accessCode || 
-             row.kode_akses === accessCode ||
+    // Get used codes from anggota sheet
+    const usedCodes = Array.isArray(anggotaData) ? anggotaData : anggotaData.data || [];
+    
+    // Check if the code exists in valid codes (kode sheet)
+    const isValidCode = validCodes.some((row: Record<string, unknown>) => {
+      return row.kode === accessCode || 
              Object.values(row).includes(accessCode);
     });
+
+    // Check if the code is already used (anggota sheet)
+    const isCodeUsed = usedCodes.some((row: Record<string, unknown>) => {
+      return row.kode === accessCode || 
+             Object.values(row).includes(accessCode);
+    });
+
+    if (isCodeUsed) {
+      return NextResponse.json(
+        { 
+          valid: false, 
+          message: 'Kode akses sudah kadaluwarsa (sudah digunakan)' 
+        },
+        { status: 401 }
+      );
+    }
 
     if (isValidCode) {
       return NextResponse.json(
         { 
           valid: true, 
-          message: 'Access code is valid' 
+          message: 'Access code is valid',
+          accessCode: accessCode
         },
         { status: 200 }
       );
@@ -60,7 +83,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { 
           valid: false, 
-          message: 'Invalid access code' 
+          message: 'Kode akses tidak valid' 
         },
         { status: 401 }
       );

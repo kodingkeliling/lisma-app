@@ -9,8 +9,10 @@ import TallyRegistrationForm from '@/components/registration/TallyRegistrationFo
 
 export default function RegistrationPage() {
   const [isCodeVerified, setIsCodeVerified] = useState(false);
+  const [verifiedAccessCode, setVerifiedAccessCode] = useState('');
 
-  const handleCodeVerified = () => {
+  const handleCodeVerified = (accessCode: string) => {
+    setVerifiedAccessCode(accessCode);
     setIsCodeVerified(true);
   };
 
@@ -21,7 +23,7 @@ export default function RegistrationPage() {
         {!isCodeVerified ? (
           <AccessCodeForm onCodeVerified={handleCodeVerified} />
         ) : (
-          <TallyRegistrationForm />
+          <TallyRegistrationForm accessCode={verifiedAccessCode} />
         )}
       </main>
       <Footer />

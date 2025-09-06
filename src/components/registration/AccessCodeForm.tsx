@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
 interface AccessCodeFormProps {
-  onCodeVerified: () => void;
+  onCodeVerified: (accessCode: string) => void;
 }
 
 export default function AccessCodeForm({ onCodeVerified }: AccessCodeFormProps) {
@@ -53,7 +53,7 @@ export default function AccessCodeForm({ onCodeVerified }: AccessCodeFormProps) 
 
       if (response.ok && data.valid) {
         toast.success('Kode akses valid!');
-        onCodeVerified();
+        onCodeVerified(data.accessCode || accessCode.trim());
       } else {
         toast.error(data.message || 'Kode akses tidak valid');
       }
