@@ -67,13 +67,13 @@ const team = [
     name: 'Khayri Muhammad Fazle',
     role: 'Koordinator PSM',
     image: '/images/koor-psm.jpg',
-    instagram: '___khyr'
+    instagram: '____khyr'
   },
   {
     name: 'Yohana Agave',
     role: 'Wakil Koordinator PSM',
     image: '/images/waor-psm.jpg',
-    instagram: 'yohanart'
+    instagram: 'yohanart__'
   },
   {
     name: 'Vika Aulia',
