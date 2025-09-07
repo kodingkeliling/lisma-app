@@ -1,7 +1,7 @@
 "use client";
 
 import Container from '../common/Container';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import React from 'react';
 import Image from 'next/image';
 
@@ -65,27 +65,76 @@ const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({ src, alt, classNa
   );
 }
 
+// Animation variants
+const container: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const item: Variants = {
+  hidden: { 
+    opacity: 0, 
+    y: 30,
+    scale: 0.95
+  },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: [0.16, 1, 0.3, 1] // easeOutExpo
+    }
+  }),
+  hover: {
+    scale: 1.02,
+    transition: { 
+      duration: 0.3,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
+};
+
 export default function UnitSection() {
-  // Debug: Log the image paths
-  React.useEffect(() => {
-    units.forEach(unit => {
-      const img = new window.Image();
-      img.onload = () => console.log(`Loaded: ${unit.bgImage}`);
-      img.onerror = () => console.error(`Failed to load: ${unit.bgImage}`);
-      img.src = unit.bgImage;
-    });
-  }, []);
+  // Remove debug useEffect as it's not needed in production
 
   return (
     <section id="unit" className="py-20 bg-gray-50">
       <Container>
-        <div className="md:px-12 w-full">
-          <div className="w-full max-w-3xl mx-auto text-center">
+        <motion.div 
+          className="md:px-12 w-full"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={container}
+        >
+          <motion.div 
+            className="w-full max-w-3xl mx-auto text-center"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { 
+                opacity: 1, 
+                y: 0,
+                transition: { duration: 0.5 }
+              }
+            }}
+          >
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Unit Kegiatan Kami</h2>
-            <p className="mt-4 text-lg leading-8 text-gray-600">
+            <motion.p 
+              className="mt-4 text-lg leading-8 text-gray-600"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
               Lingkung Seni Mahasiswa memiliki 5 unit kesenian, sebagai berikut:
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
           
           <div className="w-full mt-16 space-y-8">
             {/* First Row - 3 Units */}
@@ -94,10 +143,9 @@ export default function UnitSection() {
                   <motion.div
                     key={unit.name}
                     className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-64 group"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    variants={item}
                     custom={index}
+                    whileHover="hover"
                   >
                     <div className="absolute inset-0 overflow-hidden transition-transform duration-700 group-hover:scale-110">
                       <ImageWithFallback 
@@ -120,10 +168,9 @@ export default function UnitSection() {
                     <motion.div
                       key={unit.name}
                       className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-64 group"
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
+                      variants={item}
                       custom={index + 3}
+                      whileHover="hover"
                     >
                       <div className="absolute inset-0 overflow-hidden transition-transform duration-700 group-hover:scale-110">
                         <ImageWithFallback 
@@ -140,7 +187,7 @@ export default function UnitSection() {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
         </Container>
       </section>
   );

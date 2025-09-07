@@ -1,3 +1,4 @@
+import { MotionDiv } from '../common/MotionComponents';
 import Container from '../common/Container';
 import Image from 'next/image';
 
@@ -9,25 +10,25 @@ const team = [
     instagram: 'fxcix_'
   },
   {
-    name: 'Reza Surya',
+    name: 'Reza Surya Sonjaya',
     role: 'Ketua 1',
     image: '/images/ketu.jpg',
     instagram: '__snjyrez'
   },
   {
-    name: 'Jidan Julian',
+    name: 'Jidan Julian Putra',
     role: 'Ketua 2',
     image: '/images/uwa.jpg',
     instagram: 'jidanjulian'
   },
   {
-    name: 'Ilma Hasna',
+    name: 'Ilma Hasna Hanifah',
     role: 'Ketua 3',
     image: '/images/kutil.jpg',
     instagram: 'ilmaasnfh'
   },
   {
-    name: 'Nabilla Aurellias',
+    name: 'Nabilla Aurellia',
     role: 'Sekretaris Umum',
     image: '/images/sekum.jpg',
     instagram: 'nabillaadzp'
@@ -39,96 +40,133 @@ const team = [
     instagram: 'achafktha'
   },
   {
-    name: 'Nabilla Aurellias',
+    name: 'Idfa Billaty',
     role: 'Koordinator Tesas',
     image: '/images/koor-tesas.jpg',
     instagram: 'idfa._'
   },
   {
-    name: 'Siti Rahayu',
+    name: 'Halimatus Sa’diyah',
     role: 'Wakil Koordinator Tesas',
     image: '/images/waor-tesas.jpg',
     instagram: 'hlmaah__'
   },
   {
-    name: 'Budi Santoso',
+    name: 'Dika Aditia',
     role: 'Koordinator KDS',
     image: '/images/koor-kds.jpg',
     instagram: 'di_x_ka'
   },
   {
-    name: 'Dewi Lestari',
+    name: 'Laudya Suci Fardhillah',
     role: 'Wakil Koordinator KDS',
     image: '/images/waor-kds.jpg',
     instagram: 'laudyasuciii'
   },
   {
-    name: 'Ahmad Fauzi',
+    name: 'Khayri Muhammad Fazle',
     role: 'Koordinator PSM',
     image: '/images/koor-psm.jpg',
     instagram: '___khyr'
   },
   {
-    name: 'Siti Rahayu',
+    name: 'Yohana Agave',
     role: 'Wakil Koordinator PSM',
     image: '/images/waor-psm.jpg',
     instagram: 'yohanart'
   },
   {
-    name: 'Budi Santoso',
+    name: 'Vika Aulia',
     role: 'Koordinator Takre',
     image: '/images/koor-takre.jpg',
     instagram: 'junevads'
   },
   {
-    name: 'Dewi Lestari',
+    name: 'Adhya Raspati Nugraha',
     role: 'Koordinator FG',
     image: '/images/koor-fg.jpg',
     instagram: 'raspatiin'
   },
   {
-    name: 'Ahmad Fauzi',
+    name: 'Muhammad Ikhlas Fajar',
     role: 'Sarana Prasarana',
     image: '/images/sapra.jpg',
     instagram: 'i.jarrr_'
   },
   {
-    name: 'Siti Rahayu',
+    name: 'Muhammad Ihsannurrohman',
     role: 'Digital Content',
     image: '/images/dc.jpg',
     instagram: '_sihsn'
   },
   {
-    name: 'Budi Santoso',
+    name: 'Mochammad Aqvaludin',
     role: 'Humas Internal',
     image: '/images/humi.jpg',
     instagram: 'aqvaaal'
   },
   {
-    name: 'Dewi Lestari',
+    name: 'Keisha Aghniya Nursandria',
     role: 'Humas Eksternal',
     image: '/images/hume.jpg',
     instagram: 'keishasndra'
   },
 ];
 
+import { Variants } from 'framer-motion';
+
+const container: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.5,
+      ease: [0.16, 1, 0.3, 1] // easeOutExpo
+    } 
+  }
+};
+
 export default function TeamSection() {
   return (
     <section id="tim" className="py-16 bg-white">
       <Container>
-        <div className="mx-auto max-w-4xl text-center mb-16">
+        <MotionDiv 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto max-w-4xl text-center mb-16"
+        >
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Dewan Pengurus Harian
           </h2>
           <p className="text-gray-500 mt-2">
             Dewan Pengurus Harian LISMA 2025/2026
           </p>
-        </div>
+        </MotionDiv>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:px-12">
+        <MotionDiv 
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:px-12"
+        >
           {team.map((member, index) => (
-            <div 
+            <MotionDiv
               key={index}
+              variants={item}
               className="group relative overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl"
             >
               {/* Foto anggota */}
@@ -177,9 +215,9 @@ export default function TeamSection() {
                   </div>
                 </a>
               </div>
-            </div>
+            </MotionDiv>
           ))}
-        </div>
+        </MotionDiv>
       </Container>
     </section>
   );
