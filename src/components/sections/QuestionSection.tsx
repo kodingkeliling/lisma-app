@@ -24,7 +24,7 @@ const faqs = [
   {
     question: 'Apa saja unit kegiatan yang ada di LISMA?',
     answer:
-      'LISMA memiliki beberapa unit kegiatan antara lain Tari Tradisional, Teater, Musik Tradisional, Paduan Suara, Seni Rupa, dan Fotografi & Film.',
+      'LISMA memiliki beberapa unit kegiatan antara lain Teater & Sastra, Kesenian Daerah Sunda, Paduan Suara & Musik, Tari Kreasi, Fotografi.',
   },
   {
     question: 'Apakah ada jadwal latihan rutin?',
