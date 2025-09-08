@@ -13,7 +13,7 @@ const units = [
   },
   {
     name: 'Kesenian Daerah Sunda',
-    description: 'Mengembangkan serta melestarikan seri tari tradisional serta alat-alat musik tradisional.',
+    description: 'Mengembangkan serta melestarikan seni tari tradisional serta alat-alat musik tradisional.',
     bgImage: '/images/kds.jpg',
   },
   {
