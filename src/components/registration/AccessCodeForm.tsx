@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 interface AccessCodeFormProps {
@@ -8,6 +9,7 @@ interface AccessCodeFormProps {
 }
 
 export default function AccessCodeForm({ onCodeVerified }: AccessCodeFormProps) {
+  const router = useRouter();
   const [accessCode, setAccessCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -54,6 +56,10 @@ export default function AccessCodeForm({ onCodeVerified }: AccessCodeFormProps) 
       if (response.ok && data.valid) {
         toast.success('Kode akses valid!');
         onCodeVerified(data.accessCode || accessCode.trim());
+      } else if (response.ok && data.isUsed) {
+        // Kode sudah digunakan, redirect ke halaman riwayat
+        toast.success('Mengarahkan ke riwayat pendaftaran...');
+        router.push(data.redirectTo);
       } else {
         toast.error(data.message || 'Kode akses tidak valid');
       }
