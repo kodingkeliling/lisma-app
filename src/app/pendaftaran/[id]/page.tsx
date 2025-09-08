@@ -56,44 +56,6 @@ export default function RegistrationHistoryPage() {
     }
   }, [kode]);
 
-  const formatDate = (dateString: string) => {
-    if (!dateString) return '-';
-    try {
-      const date = new Date(dateString);
-      return date.toLocaleDateString('id-ID', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-    } catch {
-      return dateString;
-    }
-  };
-
-  const formatPhoneNumber = (phone: number | string) => {
-    if (!phone) return '-';
-    const phoneStr = phone.toString();
-    if (phoneStr.startsWith('62')) {
-      return `+${phoneStr}`;
-    }
-    return phoneStr;
-  };
-
-  const formatBirthDate = (dateString: string) => {
-    if (!dateString) return '-';
-    try {
-      const date = new Date(dateString);
-      return date.toLocaleDateString('id-ID', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-    } catch {
-      return dateString;
-    }
-  };
 
   if (loading) {
     return (
@@ -191,7 +153,7 @@ export default function RegistrationHistoryPage() {
 
                       <div className="md:col-span-2">
                         <label className="block text-sm font-medium text-gray-700">Unit yang Dipilih</label>
-                        <p className="mt-1 text-sm text-gray-900 font-semibold text-lisma text-lg">{memberData.Unit || '-'}</p>
+                        <p className="mt-1 text-lg text-lisma font-semibold">{memberData.Unit || '-'}</p>
                       </div>
                     </div>
                   </div>
