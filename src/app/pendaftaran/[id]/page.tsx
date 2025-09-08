@@ -31,11 +31,14 @@ export default function RegistrationHistoryPage() {
   const [memberData, setMemberData] = useState<MemberData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
-    const fetchMemberData = async () => {
+    const fetchMemberData = async (attempt: number = 1) => {
       try {
         setLoading(true);
+        setError(null);
+        
         const response = await fetch(`/api/get-member-data?kode=${kode}`);
         const result = await response.json();
 
@@ -44,10 +47,22 @@ export default function RegistrationHistoryPage() {
         }
 
         setMemberData(result.data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Terjadi kesalahan');
-      } finally {
         setLoading(false);
+      } catch (err) {
+        const errorMessage = err instanceof Error ? err.message : 'Terjadi kesalahan';
+        
+        // Jika masih ada attempt tersisa, retry
+        if (attempt < 2) {
+          setRetryCount(attempt);
+          // Delay 1 detik sebelum retry
+          setTimeout(() => {
+            fetchMemberData(attempt + 1);
+          }, 1000);
+        } else {
+          // Setelah 2 kali retry, tampilkan error
+          setError(errorMessage);
+          setLoading(false);
+        }
       }
     };
 
@@ -65,6 +80,11 @@ export default function RegistrationHistoryPage() {
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lisma mx-auto mb-4"></div>
             <p className="text-gray-600">Memuat data pendaftaran...</p>
+            {retryCount > 0 && (
+              <p className="text-sm text-gray-500 mt-2">
+                Mencoba lagi... (Percobaan {retryCount + 1}/2)
+              </p>
+            )}
           </div>
         </main>
         <Footer />
