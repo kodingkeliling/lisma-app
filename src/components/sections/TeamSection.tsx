@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const team = [
   {
-    name: 'Ferdiansyah S',
+    name: 'M. Ferdiansah S',
     role: 'Ketua Umum',
     image: '/images/ketum.jpg',
     instagram: 'fxcix_'
@@ -40,7 +40,7 @@ const team = [
     instagram: 'achafktha'
   },
   {
-    name: 'Idfa Billaty',
+    name: 'Idfa Billaty H. A',
     role: 'Koordinator Tesas',
     image: '/images/koor-tesas.jpg',
     instagram: 'idfa._'
@@ -70,7 +70,7 @@ const team = [
     instagram: '____khyr'
   },
   {
-    name: 'Yohana Agave',
+    name: 'Yohana Agave A',
     role: 'Wakil Koordinator PSM',
     image: '/images/waor-psm.jpg',
     instagram: 'yohanart__'
