@@ -134,34 +134,46 @@ export default function AccessCodeForm({ onCodeVerified }: AccessCodeFormProps) 
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div 
-            ref={modalRef}
-            className="bg-white rounded-lg max-w-md w-full p-6 relative"
-          >
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-              aria-label="Tutup"
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div 
+              ref={modalRef}
+              className="bg-white rounded-lg max-w-md w-full p-6 relative"
             >
-              <span className="text-2xl">&times;</span>
-            </button>
-            
-            <h3 className="text-lg font-bold mb-4">Kode Akses</h3>
-            
-            <div className="space-y-4 text-sm text-gray-700">
-              <p>
-                Jika belum mendapatkan kode akses, silakan konfirmasi ke Contact Person untuk mendapatkan kode akses.
-              </p>
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+                aria-label="Tutup"
+              >
+                <span className="text-2xl">&times;</span>
+              </button>
               
-              <div className="mt-4 p-3 bg-blue-50 rounded-md">
-                <p className="font-medium">Contact Person:</p>
-                <p>089512491100 (LISMA UNPAS)</p>
+              <h3 className="text-lg font-bold mb-4">Kode Akses</h3>
+              
+              <div className="space-y-4 text-sm text-gray-700">
+                <p>Lakukan pembelian kode akses seharga Rp. 30.000 melalui:</p>
+                
+                <div className="bg-gray-50 p-4 rounded-md">
+                  <p className="font-medium">SEABANK: 901953640212</p>
+                  <p className="text-gray-600">a/n Athhari dwikala fitri</p>
+                  
+                  <div className="my-3 border-t border-gray-200"></div>
+                  
+                  <p className="font-medium">DANA: 082215844210</p>
+                  <p className="text-gray-600">a/n Helma Tiana Ramadhani</p>
+                </div>
+                
+                <p>
+                  Jika sudah melakukan pembayaran, silakan konfirmasi pembayaran ke Contact Person untuk mendapatkan kode akses.
+                </p>
+                
+                <div className="mt-4 p-3 bg-blue-50 rounded-md">
+                  <p className="font-medium">Contact Person:</p>
+                  <p>089512491100 (Serly Devina)</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
     </>
   );
 }

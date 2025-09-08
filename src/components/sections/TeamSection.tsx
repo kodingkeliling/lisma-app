@@ -94,12 +94,6 @@ const team = [
     instagram: 'i.jarrr_'
   },
   {
-    name: 'Muhammad Ihsannurrohman',
-    role: 'Digital Content',
-    image: '/images/dc.jpg',
-    instagram: '_sihsn'
-  },
-  {
     name: 'Mochammad Aqvaludin',
     role: 'Humas Internal',
     image: '/images/humi.jpg',
@@ -110,6 +104,12 @@ const team = [
     role: 'Humas Eksternal',
     image: '/images/hume.jpg',
     instagram: 'keishasndra'
+  },
+  {
+    name: 'Muhammad Ihsannurrohman',
+    role: 'Digital Content',
+    image: '/images/dc.jpg',
+    instagram: '_sihsn'
   },
 ];
 
