@@ -8,22 +8,22 @@ import Image from 'next/image';
 const units = [
   {
     name: 'Teater & Sastra',
-    description: 'Wadah berekspresi melalui seni peran serta sastra.',
+    description: 'Wadah Berekspresi Melalui Seni Peran Serta Sastra.',
     bgImage: '/images/tesas.jpg',
   },
   {
     name: 'Kesenian Daerah Sunda',
-    description: 'Mengembangkan dan melestarikan seni tari tradisional Indonesia dengan kreasi kontemporer.',
+    description: 'Mengembangkan serta melestarikan seri tari tradisional serta alat-alat musik tradisional.',
     bgImage: '/images/kds.jpg',
   },
   {
     name: 'Paduan Suara & Musik',
-    description: 'Megasah vokal dalam harmoni paduan suara serta berlatih alat musik.',
+    description: 'Megasah Vokal Dalam Harmoni Paduan Suara Serta Berlatih Alat Musik.',
     bgImage: '/images/psm.jpg',
   },
   {
     name: 'Tari Kreasi',
-    description: 'Melatih gerakan tubuh dengan nada nada musik modern.',
+    description: 'Melatih Gerakan Tubuh Dengan Nada Nada Musik Modern.',
     bgImage: '/images/takre.jpg',
   },
   {
