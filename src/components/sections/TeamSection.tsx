@@ -28,13 +28,13 @@ const team = [
     instagram: 'ilmaasnfh'
   },
   {
-    name: 'Nabilla Aurellia',
+    name: 'Nabilla Aurellia A. P',
     role: 'Sekretaris Umum',
     image: '/images/sekum.jpg',
     instagram: 'nabillaadzp'
   },
   {
-    name: 'Zhalca Fakitha',
+    name: 'Zhalcha Fakitha',
     role: 'Bendahara Umum',
     image: '/images/bendum.jpg',
     instagram: 'achafktha'
@@ -64,7 +64,7 @@ const team = [
     instagram: 'laudyasuciii'
   },
   {
-    name: 'Khayri Muhammad Fazle',
+    name: 'Khayri Muhammad F.R',
     role: 'Koordinator PSM',
     image: '/images/koor-psm.jpg',
     instagram: '____khyr'

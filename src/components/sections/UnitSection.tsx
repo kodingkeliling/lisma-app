@@ -8,7 +8,7 @@ import Image from 'next/image';
 const units = [
   {
     name: 'Teater & Sastra',
-    description: 'Wadah berekspresi melalui seni peran dengan berbagai pementasan teater modern dan tradisional.',
+    description: 'wadah berekspresi melalui seni peran serta sastra.',
     bgImage: '/images/tesas.jpg',
   },
   {
@@ -18,12 +18,12 @@ const units = [
   },
   {
     name: 'Paduan Suara & Musik',
-    description: 'Menggali dan mengembangkan musik tradisional dengan sentuhan modern yang inovatif.',
+    description: 'megasah vokal dalam harmoni paduan suara serta berlatih alat musik.',
     bgImage: '/images/psm.jpg',
   },
   {
     name: 'Tari Kreasi',
-    description: 'Mengasah vokal dan harmoni dalam paduan suara dengan berbagai repertoar musik.',
+    description: 'melatih gerakan tubuh dengan nada nada musik modern.',
     bgImage: '/images/takre.jpg',
   },
   {
