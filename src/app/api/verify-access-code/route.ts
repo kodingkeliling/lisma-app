@@ -55,18 +55,21 @@ export async function POST(request: NextRequest) {
     });
 
     // Check if the code is already used (anggota sheet)
-    const isCodeUsed = usedCodes.some((row: Record<string, unknown>) => {
+    const usedCodeData = usedCodes.find((row: Record<string, unknown>) => {
       return row.kode === accessCode || 
              Object.values(row).includes(accessCode);
     });
 
-    if (isCodeUsed) {
+    if (usedCodeData) {
       return NextResponse.json(
         { 
           valid: false, 
-          message: 'Kode akses sudah kadaluwarsa (sudah digunakan)' 
+          message: 'Kode akses sudah digunakan',
+          isUsed: true,
+          redirectTo: `/pendaftaran/${accessCode}`,
+          accessCode: accessCode
         },
-        { status: 401 }
+        { status: 200 }
       );
     }
 

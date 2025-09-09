@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const team = [
   {
-    name: 'Ferdiansyah S',
+    name: 'M. Ferdiansah S',
     role: 'Ketua Umum',
     image: '/images/ketum.jpg',
     instagram: 'fxcix_'
@@ -28,19 +28,19 @@ const team = [
     instagram: 'ilmaasnfh'
   },
   {
-    name: 'Nabilla Aurellia',
+    name: 'Nabilla Aurellia A. P',
     role: 'Sekretaris Umum',
     image: '/images/sekum.jpg',
     instagram: 'nabillaadzp'
   },
   {
-    name: 'Zhalca Fakitha',
+    name: 'Zhalcha Fakitha',
     role: 'Bendahara Umum',
     image: '/images/bendum.jpg',
     instagram: 'achafktha'
   },
   {
-    name: 'Idfa Billaty',
+    name: 'Idfa Billaty H. A',
     role: 'Koordinator Tesas',
     image: '/images/koor-tesas.jpg',
     instagram: 'idfa._'
@@ -64,13 +64,13 @@ const team = [
     instagram: 'laudyasuciii'
   },
   {
-    name: 'Khayri Muhammad Fazle',
+    name: 'Khayri Muhammad F.R',
     role: 'Koordinator PSM',
     image: '/images/koor-psm.jpg',
     instagram: '____khyr'
   },
   {
-    name: 'Yohana Agave',
+    name: 'Yohana Agave A',
     role: 'Wakil Koordinator PSM',
     image: '/images/waor-psm.jpg',
     instagram: 'yohanart__'
@@ -94,12 +94,6 @@ const team = [
     instagram: 'i.jarrr_'
   },
   {
-    name: 'Muhammad Ihsannurrohman',
-    role: 'Digital Content',
-    image: '/images/dc.jpg',
-    instagram: '_sihsn'
-  },
-  {
     name: 'Mochammad Aqvaludin',
     role: 'Humas Internal',
     image: '/images/humi.jpg',
@@ -110,6 +104,12 @@ const team = [
     role: 'Humas Eksternal',
     image: '/images/hume.jpg',
     instagram: 'keishasndra'
+  },
+  {
+    name: 'Muhammad Ihsannurrohman',
+    role: 'Digital Content',
+    image: '/images/dc.jpg',
+    instagram: '_sihsn'
   },
 ];
 
