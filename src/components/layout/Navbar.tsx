@@ -93,6 +93,7 @@ export default function Navbar() {
             ? 'bg-white border-b border-gray-100 md:bg-transparent md:border-transparent' 
             : 'bg-transparent border-transparent'
       }`}
+      style={{ zIndex: 1000 }}
     >
       <Container className={`transition-all duration-500 ease-in-out ${navSize}`}>
         <div className="flex h-full items-center justify-between md:px-12">
@@ -188,40 +189,47 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu */}
-        <div
-          className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-            isOpen ? 'max-h-96' : 'max-h-0'
-          }`}
-        >
-          <div className="px-4 pt-2 pb-4 space-y-2 bg-white">
-            <a
-              href="#tentang"
-              className="block px-3 py-2 text-lisma-text hover:text-lisma font-medium"
-              onClick={(e) => handleScroll(e, 'tentang')}
-            >
-              Tentang Kami
-            </a>
-            <a
-              href="#unit"
-              className="block px-3 py-2 text-lisma-text hover:text-lisma font-medium"
-              onClick={(e) => handleScroll(e, 'unit')}
-            >
-              Unit Kegiatan
-            </a>
-            <a
-              href="#tim"
-              className="block px-3 py-2 text-lisma-text hover:text-lisma font-medium"
-              onClick={(e) => handleScroll(e, 'tim')}
-            >
-              Tim Kami
-            </a>
-            <a
-              href="#faq"
-              className="block px-3 py-2 text-lisma-text hover:text-lisma font-medium"
-              onClick={(e) => handleScroll(e, 'faq')}
-            >
-              FAQ
-            </a>
+        <div className="relative w-full">
+          <div
+            className={`md:hidden fixed left-0 right-0 bg-white shadow-md transition-all duration-300 ease-in-out overflow-hidden ${
+              isOpen ? 'max-h-96' : 'max-h-0'
+            }`}
+            style={{
+              top: navSize === 'h-24' ? '96px' : '64px',
+              width: '100vw',
+              marginLeft: 'calc(-50vw + 50%)'
+            }}
+          >
+            <div className="px-6 py-2 space-y-2">
+              <a
+                href="#tentang"
+                className="block py-3 px-4 text-lisma-text hover:text-lisma font-medium hover:bg-gray-50 rounded-md transition-colors"
+                onClick={(e) => handleScroll(e, 'tentang')}
+              >
+                Tentang Kami
+              </a>
+              <a
+                href="#unit"
+                className="block py-3 px-4 text-lisma-text hover:text-lisma font-medium hover:bg-gray-50 rounded-md transition-colors"
+                onClick={(e) => handleScroll(e, 'unit')}
+              >
+                Unit Kegiatan
+              </a>
+              <a
+                href="#tim"
+                className="block py-3 px-4 text-lisma-text hover:text-lisma font-medium hover:bg-gray-50 rounded-md transition-colors"
+                onClick={(e) => handleScroll(e, 'tim')}
+              >
+                Tim Kami
+              </a>
+              <a
+                href="#faq"
+                className="block py-3 px-4 text-lisma-text hover:text-lisma font-medium hover:bg-gray-50 rounded-md transition-colors"
+                onClick={(e) => handleScroll(e, 'faq')}
+              >
+                FAQ
+              </a>
+            </div>
           </div>
         </div>
       </Container>

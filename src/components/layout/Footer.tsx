@@ -19,7 +19,7 @@ export default function Footer() {
   
   return (
     <footer className="bg-gray-50 text-gray-700 w-full">
-      <Container className="py-12">
+      <Container className="py-8">
         <MotionDiv 
           variants={footerContainer}
           initial="hidden"
@@ -103,21 +103,26 @@ export default function Footer() {
           </div>
           
           <div className="mt-12 pt-8 border-t border-gray-200">
-  <div className="w-full py-4 sm:py-6">
-    <p className="text-center text-gray-500 text-[10px] sm:text-[12px] md:text-[13px] whitespace-nowrap px-2">
-      &copy; {new Date().getFullYear()} Copyright{" "}
-      <span className="font-bold">LISMA UNPAS</span>. Powered by{" "}
-      <a 
-        href="https://www.kodingkeliling.com/" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="text-lisma font-bold"
-      >
-        Koding Keliling
-      </a>
-    </p>
-  </div>
-</div>
+            <div className="w-full py-4 sm:py-6">
+              <div className="flex flex-col md:flex-row md:justify-center md:items-center text-gray-600 text-sm sm:text-base">
+                <p className="text-center md:inline">
+                  &copy; {new Date().getFullYear()} Copyright{' '}
+                  <span className="font-semibold">LISMA UNPAS</span>
+                </p>
+                <p className="text-center mt-1 md:mt-0 md:ml-1">
+                  <span className="hidden md:inline"> </span>Powered by{' '}
+                  <a 
+                    href="https://www.kodingkeliling.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-lisma font-semibold hover:underline"
+                  >
+                    Koding Keliling
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
 
         </MotionDiv>
       </Container>
